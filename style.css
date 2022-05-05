@@ -1,0 +1,88 @@
+body {
+    height: 100vh;
+     
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    position: relative;
+    z-index: 0;
+}
+
+h1 {
+    margin-top: 150px;
+    
+    width: 100vw;
+
+    text-align: center;
+    font-size: 25pt;
+    font-weight: 500;
+    color: white;
+}
+
+/* BUTTONS */
+#buttons {
+    margin-top: 50px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+} 
+
+/* YEP BUTTON */
+#buttons button {     
+    width: 160px;
+    height: 50px;
+    
+    border: 2px solid #0CF25C;
+    background: none;
+    border-radius: 15px;
+
+    font-size: 20px;
+    font-weight: 500;
+    color:#0CF25C;
+
+    cursor: pointer;
+    transition: 0.3s all ease-out;
+}
+
+#buttons button:hover {
+    background-color: #0CF25C;
+    color: white;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 10%);
+}
+
+/* NOPE BUTTON */
+#buttons #nope-button {    
+    border: 2px solid #8779DA;
+    color: #8779DA;
+    transition: 0.3s all ease-out;
+}
+
+#buttons #nope-button:hover {
+    background-color: #8779DA;
+    color: white;
+}
+
+#planet {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    border-radius: 100%;
+    bottom: 10vh;
+    z-index: -10;
+    background-image: url(world.jpg);
+    background-size: cover;
+    box-shadow: inset 0 0 25px rgba(0,0,0,1), 0 0 50px #4069ff;
+    transform: rotate(13deg);
+    animation: animationEarth 200s linear infinite;
+}
+
+@keyframes animationEarth {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -750px 0;
+    }
+}

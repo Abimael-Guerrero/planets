@@ -1,0 +1,16 @@
+#container-planets {
+    border: 1px dotted red;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+ #container-planets div { 
+    border: 1px solid red;
+    
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+} 
