@@ -1,10 +1,12 @@
+/* @import url('planet-earth.css'); */
+
 body {
     height: 100vh;
 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* align-content: center; */
+    align-content: center;
 }
 
 /* MAIN CONTEINER */
@@ -12,6 +14,8 @@ body {
     border: 3px dotted red;
     display: flex;
     flex-direction: column;
+    /* align-content: center;
+    justify-content: center; */
 }
 
 /* Title text */
@@ -138,15 +142,48 @@ span {
     border-left: 1px solid #0CF25C; */
 }
 
-.planets-container {
-    width: 100%;
-    height: 100%;
-    border: 1px solid red;
-    display: flex;
-    flex-wrap: wrap;
+.planet-container {
+    width: 215px;
+    height: 215px;
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    margin-top: -130px;
+    border-radius: 100%;
 }
 
-.planets-container div{
-    flex-grow: 1;
-    border: 1px solid red;
+.planet-container {
+    /* width: 300px;
+    height: 300px; */
+    /* position: absolute; */
+    /* border-radius: 100%; */
+    /* bottom: 10vh; */
+    /* z-index: -10; */
+    background-image: url(earth.jpg);
+    background-size: cover;
+    box-shadow: inset 0 0 25px rgba(0,0,0,1), 0 0 50px #4069ff;
+    transform: rotate(13deg);
+    animation: animationEarth 20s linear infinite;
+}
+
+@keyframes animationEarth {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 536px 0;
+    }
+}
+
+
+.arrow {
+    align-self: flex-end;
+    margin-bottom: 80px;
+    margin-right: 50px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+
+.right{
+    margin-left: 50px;
 }

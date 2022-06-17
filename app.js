@@ -2,12 +2,15 @@ const inputWeight = document.querySelector('.input')
 const done = document.querySelector('.done-button')
 const kilos = document.querySelector('.kg')
 const lbs = document.querySelector('.lbs') 
-const weights = document.querySelectorAll('.weight') // buttons for kg & lbs
+const weights = document.querySelectorAll('.weight') // for kg & lbs buttons
+const planetsArray = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranos', 'neptune' ]
 
 let weight = ''
 let completed = false
 let planetsPhase = true // false
 
+
+// Verifies every time weight is changed
 function verifier() {
     const converted = Number(inputWeight.value)
 
@@ -44,43 +47,71 @@ function verifier() {
     }
 }
 
-function createPlanets(){            
+// Creates text, planet selector and planets
+function createPlanets(){ 
+    const body = document.querySelector('body')
+    // arrow for change planet
+    const leftArrBtn = document.createElement('div')           
+    const rightArrBtn = document.createElement('div')           
+    // text for planets
     const chosePlanetText = document.createElement('h1')
     const planetsNamesDiv = document.createElement('div')
-
-    chosePlanetText.innerHTML = '<span>Now</span><br>Chose a planet</br>'
-    planetsNamesDiv.innerHTML = 'Mercury'
-    planetsNamesDiv.classList.add('planets-names')
     // lines container
     const linesContainer = document.createElement('div')
     const line = document.createElement('div')
     const halfCircle = document.createElement('div')
+    // div for planets
+    const planetContainer = document.createElement('div')
 
+    //arrows for change planets
+    leftArrBtn.classList.add('arrow')
+    leftArrBtn.classList.add('left')
+    leftArrBtn.textContent = '<'
+    rightArrBtn.textContent = '>'
+    rightArrBtn.classList.add('arrow')
+    rightArrBtn.classList.add('right')
+    
+    // text for planets
+    chosePlanetText.innerHTML = '<span>Now</span><br>Chose a planet</br>'
+    planetsNamesDiv.innerHTML = 'Mercury'
+    planetsNamesDiv.classList.add('planets-names')
+    
+    // lines container
     linesContainer.classList.add('lines-container')
     line.classList.add('line')
     halfCircle.classList.add('half-circle')
     linesContainer.append(line, halfCircle)
+    
     // div for planets
-    const planetsContainer = document.createElement('div')
-    const planetMercury = document.createElement('div')
-    const planetVenus = document.createElement('div')
-    const planetEarth = document.createElement('div')
-    const planetMars = document.createElement('div')
-    const planetJupiter = document.createElement('div')
-    const planetSturn = document.createElement('div')
-    const planetUrano = document.createElement('div')
-    const planetNeptune = document.createElement('div')
-    
-    planetsContainer.classList.add('planets-container')
-    planetsContainer.append(planetMercury, planetVenus, planetEarth, planetMars, planetJupiter, planetSturn, planetUrano, planetNeptune)
-    
-   
-    
-    
-    document.querySelector('.main-container').append(chosePlanetText, planetsNamesDiv, linesContainer)
-    document.querySelector('body').append(planetsContainer)
+    planetContainer.classList.add('planet-container')        
+
+    // adding elements
+    document.querySelector('.main-container').append(chosePlanetText, planetsNamesDiv, linesContainer, planetContainer)
+
+    body.insertBefore(leftArrBtn, body.children[0])
+    body.append(rightArrBtn)
     
     planetsPhase = false
+
+    changePlanet(planetContainer)
+}
+
+function changePlanet(p) {
+    let n = 2
+    document.querySelectorAll('.arrow').forEach((e) => {
+        e.addEventListener('click', () => {
+            if (e.textContent === '<') {
+                console.log('hola')
+                n -= 1 
+                n = (n < 0) ? n = 7 : n
+                p.style.backgroundImage = `url(${planetsArray[n]}.jpg)`
+            } else {
+                n += 1
+                n = (n > 7) ? n = 0 : n
+                p.style.backgroundImage = `url(${planetsArray[n]}.jpg)`
+            }
+        }) 
+    })
 }
 
 weights.forEach((e) => { 
@@ -128,3 +159,8 @@ inputWeight.addEventListener('click', function () {
 //         window.alert('funciono')
 //     }
 // })
+
+// function changeNextPlanet(e)  {
+//     console.log(e.target)
+//     window.alert('hola a todos')
+// }
